@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Configuración Viewport: 'user-scalable=no' hace que se sienta más como una app nativa -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Título de la App -->
+    <title>YELOX Heladería POS</title>
+
+    <!-- Iconos: Asegúrate de tener estas imágenes en tu carpeta public/icons/ -->
+    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Configuración PWA -->
+    <link rel="manifest" href="/YELOX/manifest.json" />
+    
+    <!-- Color del tema -->
+    <meta name="theme-color" content="#eb002b" />
+
+    <!-- Meta Tags para PWA (Android Chrome moderno) - CORREGIDO -->
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- Soporte Legacy para iOS (iPhone/iPad) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="YELOX" />
+    <script type="module" crossorigin src="/YELOX/assets/index-4c2022b9.js"></script>
+    <link rel="stylesheet" href="/YELOX/assets/index-61e8fec8.css">
+  <link rel="manifest" href="/YELOX/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/YELOX/registerSW.js"></script></head>
+
+  <body>
+    <div id="root"></div>
+    
+    <!-- Tu script principal de React -->
+    
+
+    <!-- Registro del Service Worker -->
+    <!-- IMPORTANTE: Borra cualquier otro registro de SW en tu main.jsx para evitar errores -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // Buscamos el archivo 'service-worker.js' en la carpeta public (raíz)
+          navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+              console.log('SW registrado con éxito en el ámbito:', registration.scope);
+            })
+            .catch((err) => {
+              console.log('Fallo al registrar SW:', err);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
